@@ -1,0 +1,32 @@
+<ion-content  class="geral">
+  <h1 class="text-center">
+    Treino
+  </h1>
+  <ion-item>
+    <ion-label position="floating" >
+      Informe o Exercício:
+    </ion-label>
+    <ion-input style="padding-right: 24px;"  [(ngModel)]="novaTarefa"></ion-input>
+  </ion-item>
+  <ion-button color="warning" id="botao" expand="block" (click)="adicionarTarefa()"  >
+    Inserir
+  </ion-button>
+  <ion-label id="lb3" position="floating" >
+    Exercícios
+  </ion-label>
+  <ion-label id="lb2" position="floating" >
+    Carga
+  </ion-label>
+ <ion-list>
+    <ion-item-group class="bc" *ngFor="let exercicio of exercicios; let casinha = index">
+      <ion-item-sliding (ionSwipe)="apagarTarefa(casinha)">
+        <ion-item>
+          <ion-label>{{ casinha+1 }}- {{ exercicio.nome }}</ion-label>
+          <input type="text" [(ngModel)]="exercicio.peso" (change)="gravarInfo()">
+        </ion-item>
+        <ion-item-options side="end"></ion-item-options>
+      </ion-item-sliding>
+    </ion-item-group>
+  </ion-list> 
+
+</ion-content>
